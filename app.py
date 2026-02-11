@@ -78,6 +78,10 @@ def previous_comic(comic_num):
         else:
            
             return render_template('index.html', comic=comic, error=None)
+            
+    except requests.exceptions.RequestException as e:
+        print(f"Network error: {e}")
+        return None
         
 # TODO: Add more routes here for the other features you choose to implement
 # Feature #3: Random Comic
