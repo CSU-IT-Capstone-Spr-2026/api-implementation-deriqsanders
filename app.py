@@ -65,7 +65,7 @@ def show_comic(comic_num):
         return render_template('index.html', comic=None,
                              error=f"Comic #{comic_num} could not be found. It may not exist.")
 
-def previous_comic(comic_num)
+def previous_comic(comic_num):
 
 response = requests.get(f"{XKCD_BASE_URL}/{comic_num}/info.0.json")
 
