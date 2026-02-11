@@ -158,7 +158,7 @@
             <p class="comic-number">Comic #{{ comic.num }}</p>
 
             <img src="{{ comic.img }}" alt="{{ comic.alt }}" class="comic-image" title="{{ comic.alt }}">
-
+            
             <div class="comic-alt">
                 <strong>Alt text:</strong> {{ comic.alt }}
             </div>
@@ -167,6 +167,9 @@
                 Published: {{ comic.month }}/{{ comic.day }}/{{ comic.year }}
             </p>
             <!-- TODO: Add any buttons for navigation, random, or form to fetch comics -->
+            <button type="button">Previous</button>
+            <button type="button">Random</button>
+            <button type="button">Next</button>
         </div>
         {% endif %}
     </main>
