@@ -73,7 +73,7 @@ def previous_comic(comic_num):
         response = requests.get(f"{XKCD_BASE_URL}/{comic_num}/info.0.json")
         
         if comic_num == 0:
-            return render_r template('index.html', comic=None,
+            return render_template('index.html', comic=None,
                                      error="No previous comic exists. Comics start at #1")
         else:
            
