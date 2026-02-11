@@ -25,7 +25,7 @@ def get_latest_comic():
 def get_comic_by_number(comic_num):
     # Fetch a specific XKCD comic by its number. Takes argument comic_num (int): The comic number to fetch
     try:
-        response = requests.get(f"{XKCD_BASE_URL}/{comic_num-1}/info.0.json")
+        response = requests.get(f"{XKCD_BASE_URL}/{comic_num}/info.0.json")
         if response.status_code == 200:
             return response.json()
         elif response.status_code == 404:
@@ -70,7 +70,7 @@ def previous_comic(comic_num):
     new_num=comic_num - 1
 
     try: 
-        response = requests.get(f"{XKCD_BASE_URL}/{comic_num}/info.0.json")
+        response = requests.get(f"{XKCD_BASE_URL}/{comic_num-1}/info.0.json")
         
         if comic_num == 0:
             return render_template('index.html', comic=None,
