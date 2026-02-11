@@ -69,15 +69,15 @@ def previous_comic(comic_num):
 
 response = requests.get(f"{XKCD_BASE_URL}/{comic_num}/info.0.json")
 
-try:
-    comic_num - 1
-    
-    if comic_num == 0:
-        return render_r template('index.html', comic=None,
-                                 error="No previous comic exists. Comics start at #1")
-    else:
-       
-        return render_template('index.html', comic=comic, error=None)
+    try:
+        comic_num - 1
+        
+        if comic_num == 0:
+            return render_r template('index.html', comic=None,
+                                     error="No previous comic exists. Comics start at #1")
+        else:
+           
+            return render_template('index.html', comic=comic, error=None)
         
 # TODO: Add more routes here for the other features you choose to implement
 # Feature #3: Random Comic
