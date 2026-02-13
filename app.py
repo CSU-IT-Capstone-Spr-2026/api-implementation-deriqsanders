@@ -67,8 +67,7 @@ def show_comic(comic_num):
 
 @app.route('/comic/<int:comic_num>')
 def previous_comic(comic_num):
-    comic_num - 1
-    if comic_num < 1 or comic_num > 3200:
+    if comic_num < 1:
         return render_template('index.html', comic=None,
                              error="Invalid comic number. Comics start at #1.")
     comic = get_comic_by_number(comic_num)
