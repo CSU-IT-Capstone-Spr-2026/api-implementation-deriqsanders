@@ -45,16 +45,16 @@ def index():
     # Fetch the latest comic and if successful, render the template with comic data else show an error
 
         
-    highest = get_latest_comic()
-    highestnum = highest['num']
+    #highest = get_latest_comic()
+    #highestnum = highest['num']
 
-    number = random.randint(1, highestnum)
+    #number = random.randint(1, highestnum)
     
     comic = get_latest_comic()
     if comic:
-        return render_template('index.html', comic=comic, random_number=number, error=None)
+        return render_template('index.html', comic=comic, error=None)
     else:
-        return render_template('index.html', comic=None, random_number=None,
+        return render_template('index.html', comic=None,
                              error="Sorry, we couldn't fetch the comic right now. Please try again later.")
 
 
@@ -100,17 +100,19 @@ def next_comic(comic_num):
                              error=f"Comic #{comic_num} could not be found. It may not exist.")
 
 @app.route('/randomcomic/<int:comic_num>')
-def random_comic(comic_num):
+def random_comic():
 
-    if  comic_num < 1 or comic_num > current['num']:
-        return render_template('index.html', comic=None,
-                             error="Invalid comic number. Comics start at #1.")
-    comic = get_comic_by_number(comic_num)
+    highest = get_latest_comic()
+    highestnum = highest['num']
+
+    number = random.randint(1, highestnum)
+   
+    comic = get_comic_by_number(number)
     if comic:
         return render_template('index.html', comic=comic, error=None)
     else:
         return render_template('index.html', comic=None,
-                             error=f"Comic #{comic_num} could not be found. It may not exist.")
+                             error=f"Comic #{comic} could not be found. It may not exist.")
     
         
 # TODO: Add more routes here for the other features you choose to implement
