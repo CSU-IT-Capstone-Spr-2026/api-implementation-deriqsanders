@@ -3,7 +3,7 @@ XKCD Comic Viewer - Starter Code
 """
 from flask import Flask, render_template, request
 import requests
-
+import random
 app = Flask(__name__)
 
 XKCD_BASE_URL = "https://xkcd.com"
