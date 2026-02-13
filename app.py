@@ -46,8 +46,9 @@ def index():
 
         
     highest = get_latest_comic()
+    highestnum = highest['num']
 
-    number = random.randint(1, highest['num'])
+    number = random.randint(1, highestnum)
     
     comic = get_latest_comic()
     if comic:
