@@ -65,10 +65,12 @@ def show_comic(comic_num):
         return render_template('index.html', comic=None,
                              error=f"Comic #{comic_num} could not be found. It may not exist.")
 
+@app.route('/comic/<int:comic_num>')
 def previous_comic(comic_num):
     comic = get_comic_by_number(comic_num)
+    comic - 1
     try: 
-        response = requests.get(f"{XKCD_BASE_URL}/{comic-1}/info.0.json")
+        response = requests.get(f"{XKCD_BASE_URL}/{comic}/info.0.json")
         
         if comic_num == 0:
             return render_template('index.html', comic=None,
