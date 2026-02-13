@@ -65,7 +65,7 @@ def show_comic(comic_num):
         return render_template('index.html', comic=None,
                              error=f"Comic #{comic_num} could not be found. It may not exist.")
 
-@app.route('/comic/<int:comic_num>')
+@app.route('/previouscomic/<int:comic_num>')
 def previous_comic(comic_num):
     if comic_num < 1:
         return render_template('index.html', comic=None,
