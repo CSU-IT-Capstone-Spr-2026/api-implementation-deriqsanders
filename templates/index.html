@@ -170,7 +170,9 @@
             <a href="{{url_for('previous_comic', comic_num=comic.num-1)}}"> 
                 <button class="btn hover" >Previous</button>
             </a>
-            <button type="button" class="btn hover" >Random</button>
+            <a href="{{url_for('random_comic', comic_num={random_number})}}"> 
+                <button class="btn hover" >Random</button>
+            </a>
             
             <a href="{{url_for('next_comic', comic_num=comic.num+1)}}"> 
                 <button class="btn hover" >Next</button>
