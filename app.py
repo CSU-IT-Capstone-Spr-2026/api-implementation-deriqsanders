@@ -53,7 +53,7 @@ def index():
     if comic:
         return render_template('index.html', comic=comic, random_number=number, error=None)
     else:
-        return render_template('index.html', comic=None, 
+        return render_template('index.html', comic=None, random_number=None,
                              error="Sorry, we couldn't fetch the comic right now. Please try again later.")
 
 
