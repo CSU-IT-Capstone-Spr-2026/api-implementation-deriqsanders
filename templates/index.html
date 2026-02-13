@@ -167,7 +167,7 @@
                 Published: {{ comic.month }}/{{ comic.day }}/{{ comic.year }}
             </p>
             <!-- TODO: Add any buttons for navigation, random, or form to fetch comics -->
-            <a href="{{url_for('previous_comic', comic_num=2)}}"> 
+            <a href="{{url_for('previous_comic', comic_num=comic.num-1)}}"> 
                 <button class="btn hover" >Previous</button>
             </a>
             <button type="button" class="btn hover" >Random</button>
