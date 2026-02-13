@@ -82,7 +82,7 @@ def next_comic(comic_num):
    # response = requests.get(XKCD_BASE_URL)
    # data= response.json()
    # current = data['num']
-    curent = get_latest_comic()
+    current = get_latest_comic()
     
     if  comic_num > current['num']:
         return render_template('index.html', comic=None,
