@@ -99,7 +99,7 @@ def next_comic(comic_num):
         return render_template('index.html', comic=None,
                              error=f"Comic #{comic_num} could not be found. It may not exist.")
 
-@app.route('/randomcomic/<int:comic_num>')
+@app.route('/randomcomic/<int:number>')
 def random_comic():
 
     highest = get_latest_comic()
