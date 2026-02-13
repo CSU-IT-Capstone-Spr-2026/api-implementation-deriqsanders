@@ -171,7 +171,11 @@
                 <button class="btn hover" >Previous</button>
             </a>
             <button type="button" class="btn hover" >Random</button>
-            <button type="button" class="btn hover" >Next</button>
+            
+            <a href="{{url_for('next_comic', comic_num=comic.num+1)}}"> 
+                <button class="btn hover" >Next</button>
+            </a>
+
         </div>
         {% endif %}
     </main>
