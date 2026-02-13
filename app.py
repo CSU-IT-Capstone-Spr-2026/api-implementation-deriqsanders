@@ -106,7 +106,7 @@ highestnum = highest['num']
 
 number = random.randint(1, highestnum)
 
-@app.route('/randomcomic/<number>')
+@app.route('/randomcomic')
 def random_comic():
 
 
