@@ -43,9 +43,15 @@ def get_comic_by_number(comic_num):
 def index():
     #Home page - displays the latest XKCD comic. Implements Feature #1: Display the Latest Comic
     # Fetch the latest comic and if successful, render the template with comic data else show an error
+
+        
+    highest = get_latest_comic()
+
+    number = random.randit(1, highest['num'])
+    
     comic = get_latest_comic()
     if comic:
-        return render_template('index.html', comic=comic, error=None)
+        return render_template('index.html', comic=comic, random_number=number, error=None)
     else:
         return render_template('index.html', comic=None, 
                              error="Sorry, we couldn't fetch the comic right now. Please try again later.")
@@ -79,12 +85,23 @@ def previous_comic(comic_num):
 
 @app.route('/nextcomic/<int:comic_num>')
 def next_comic(comic_num):
-   # response = requests.get(XKCD_BASE_URL)
-   # data= response.json()
-   # current = data['num']
+    
     current = get_latest_comic()
     
     if  comic_num > current['num']:
+        return render_template('index.html', comic=None,
+                             error="Invalid comic number. Comics start at #1.")
+    comic = get_comic_by_number(comic_num)
+    if comic:
+        return render_template('index.html', comic=comic, error=None)
+    else:
+        return render_template('index.html', comic=None,
+                             error=f"Comic #{comic_num} could not be found. It may not exist.")
+
+@app.route('/randomcomic/<int:comic_num>')
+def random_comic(comic_num):
+
+    if  comic_num < 1 or comic_num > current['num']:
         return render_template('index.html', comic=None,
                              error="Invalid comic number. Comics start at #1.")
     comic = get_comic_by_number(comic_num)
