@@ -101,14 +101,15 @@ def next_comic(comic_num):
 
 
 
-highest = get_latest_comic()
-highestnum = highest['num']
 
-number = random.randint(1, highestnum)
 
 @app.route('/randomcomic')
 def random_comic():
+    
+    highest = get_latest_comic()
+    highestnum = highest['num']
 
+    number = random.randint(1, highestnum)
 
    
     comic = get_comic_by_number(number)
