@@ -99,13 +99,17 @@ def next_comic(comic_num):
         return render_template('index.html', comic=None,
                              error=f"Comic #{comic_num} could not be found. It may not exist.")
 
+
+
+highest = get_latest_comic()
+highestnum = highest['num']
+
+number = random.randint(1, highestnum)
+
 @app.route('/randomcomic/<int:number>')
 def random_comic():
 
-    highest = get_latest_comic()
-    highestnum = highest['num']
 
-    number = random.randint(1, highestnum)
    
     comic = get_comic_by_number(number)
     if comic:
