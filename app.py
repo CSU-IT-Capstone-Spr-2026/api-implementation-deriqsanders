@@ -77,18 +77,23 @@ def previous_comic(comic_num):
         return render_template('index.html', comic=None,
                              error=f"Comic #{comic_num} could not be found. It may not exist.")
 
-
+@app.route('/nextcomic/<int:comic_num>')
+def next_comic(comic_num):
+   # response = requests.get(XKCD_BASE_URL)
+   # data= response.json()
+   # current = data['num']
+    curent = get_latest_comic()
     
-    #comic = get_comic_by_number(comic_num)
-    #comic - 1
-        
-   # if comic_num == 0:
-    #    return render_template('index.html', comic=None,
-   #                             error="No previous comic exists. Comics start at #1")
-  #  else:
-           
-     #   return render_template('index.html', comic=comic, error=None)
-            
+    if  comic_num > current['num']:
+        return render_template('index.html', comic=None,
+                             error="Invalid comic number. Comics start at #1.")
+    comic = get_comic_by_number(comic_num)
+    if comic:
+        return render_template('index.html', comic=comic, error=None)
+    else:
+        return render_template('index.html', comic=None,
+                             error=f"Comic #{comic_num} could not be found. It may not exist.")
+    
         
 # TODO: Add more routes here for the other features you choose to implement
 # Feature #3: Random Comic
