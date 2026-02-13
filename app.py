@@ -66,13 +66,11 @@ def show_comic(comic_num):
                              error=f"Comic #{comic_num} could not be found. It may not exist.")
 
 def previous_comic(comic_num):
-
-    new_num=comic_num - 1
-
+    comic = get_comic_by_number(comic_num)
     try: 
-        response = requests.get(f"{XKCD_BASE_URL}/{comic_num-1}/info.0.json")
+        response = requests.get(f"{XKCD_BASE_URL}/{comic-1}/info.0.json")
         
-        if comic_num == 0:
+        if comic_num === 0:
             return render_template('index.html', comic=None,
                                      error="No previous comic exists. Comics start at #1")
         else:
