@@ -1,7 +1,9 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/zN2AskmG)
 # XKCD Comic Viewer
 
-[Add your 2-3 sentence description of what your application does here]
+This application is a simple webpage that displays the latest XKCD comic. 
+User has the ability to navigate between comics using a "Previous" and "Next" button.
+User can click the "Random" button to display a random comic.
 
 ## Features Implemented
 
@@ -9,8 +11,8 @@ Check off the features you implemented (must have at least 4 and 2 are implemete
 
 - [X] Feature #1: Display the Latest Comic
 - [X] Feature #2: Display a Specific Comic by Number
-- [ ] Feature #3: Random Comic Button
-- [ ] Feature #4: Navigation (Previous/Next)
+- [X] Feature #3: Random Comic Button
+- [X] Feature #4: Navigation (Previous/Next)
 - [ ] Feature #5: Search by Comic Number Form
 - [ ] Feature #6: Display Multiple Recent Comics
 
@@ -53,17 +55,14 @@ Check off the features you implemented (must have at least 4 and 2 are implemete
 
 ## Usage
 
-[Explain how to use your application - what can users do? What buttons should they click?]
+User can click the "Previous" button to go to the previous issue.
+User can click the "Random" button to see a random issue.
+User can click the "Next" button to go to the next issue.
 
 ## Screenshots
 
-[Add screenshots of your application here - you can drag and drop images into GitHub or use Markdown image syntax]
+<img width="849" height="913" alt="Screenshot 2026-02-13 at 7 09 36 PM" src="https://github.com/user-attachments/assets/98941915-b1cb-40b7-a44a-ef9b3e2161b5" />
 
-Example:
-```
-![Latest Comic View](screenshots/latest-comic.png)
-![Search Feature](screenshots/search.png)
-```
 
 ## API Endpoints Used
 
@@ -73,14 +72,26 @@ Example:
 ## Challenges and Solutions
 
 [Write 2-3 paragraphs about:]
-- What challenges did you face while working on this assignment?
-- How did you solve them?
-- What did you learn about APIs?
+
+I did not have any previous experience with JSON or APIs.
+The challenge I faced was learning how these tools work and implementing them-
+to add function to the site. I also haven't been taught about HTTP methods-
+and how to utlize them in code.
+
+To solve my challenges I leveraged the interent.
+I read documentation on Flask and HTML.
+I used forums to help me solve some of the errors I received.
+I've never bridged script to html so researched that as well.
+
+I learned APIs are great for adding features to an application.
+Theyre efficient as it eliminates having to code everything from scratch.
+I learned about how to actully integrate an API into a application, and-
+a real word use case.
 
 ## Future Improvements
 
-[Optional: What would you add if you had more time?]
+If I had more time, I would add a search comic by number feature.
 
 ## Author
 
-[Your name]
+D'Eriq Sanders
