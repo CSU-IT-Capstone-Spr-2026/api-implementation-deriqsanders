@@ -158,7 +158,7 @@
             <p class="comic-number">Comic #{{ comic.num }}</p>
 
             <img src="{{ comic.img }}" alt="{{ comic.alt }}" class="comic-image" title="{{ comic.alt }}">
-
+            
             <div class="comic-alt">
                 <strong>Alt text:</strong> {{ comic.alt }}
             </div>
@@ -167,6 +167,17 @@
                 Published: {{ comic.month }}/{{ comic.day }}/{{ comic.year }}
             </p>
             <!-- TODO: Add any buttons for navigation, random, or form to fetch comics -->
+            <a href="{{url_for('previous_comic', comic_num=comic.num-1)}}"> 
+                <button class="btn hover" >Previous</button>
+            </a>
+            <a href="{{url_for('random_comic')}}"> 
+                <button class="btn hover" >Random</button>
+            </a>
+            
+            <a href="{{url_for('next_comic', comic_num=comic.num+1)}}"> 
+                <button class="btn hover" >Next</button>
+            </a>
+
         </div>
         {% endif %}
     </main>

@@ -3,7 +3,7 @@ XKCD Comic Viewer - Starter Code
 """
 from flask import Flask, render_template, request
 import requests
-
+import random
 app = Flask(__name__)
 
 XKCD_BASE_URL = "https://xkcd.com"
@@ -42,12 +42,12 @@ def get_comic_by_number(comic_num):
 @app.route('/')
 def index():
     #Home page - displays the latest XKCD comic. Implements Feature #1: Display the Latest Comic
-    # Fetch the latest comic and if successful, render the template with comic data else show an error
+    # Fetch the latest comic and if successful, render the template with comic data else show an error    
     comic = get_latest_comic()
     if comic:
         return render_template('index.html', comic=comic, error=None)
     else:
-        return render_template('index.html', comic=None, 
+        return render_template('index.html', comic=None,
                              error="Sorry, we couldn't fetch the comic right now. Please try again later.")
 
 
@@ -65,12 +65,55 @@ def show_comic(comic_num):
         return render_template('index.html', comic=None,
                              error=f"Comic #{comic_num} could not be found. It may not exist.")
 
+#Feature #4 Navigation 
+@app.route('/previouscomic/<int:comic_num>')
+def previous_comic(comic_num):
+    #Navigates to the previous comic
+    if comic_num < 1:
+        return render_template('index.html', comic=None,
+                             error="Invalid comic number. Comics start at #1.")
+    comic = get_comic_by_number(comic_num)
+    if comic:
+        return render_template('index.html', comic=comic, error=None)
+    else:
+        return render_template('index.html', comic=None,
+                             error=f"Comic #{comic_num} could not be found. It may not exist.")
 
-# TODO: Add more routes here for the other features you choose to implement
-# Feature #3: Random Comic
-# Feature #4: Navigation (Previous/Next)
-# Feature #5: Search Form
-# Feature #6: Display Multiple Recent Comics
+@app.route('/nextcomic/<int:comic_num>')
+def next_comic(comic_num):
+   #Navigates to the next comic 
+    current = get_latest_comic()
+    
+    if  comic_num > current['num']:
+        return render_template('index.html', comic=None,
+                             error="Invalid comic number.")
+    comic = get_comic_by_number(comic_num)
+    if comic:
+        return render_template('index.html', comic=comic, error=None)
+    else:
+        return render_template('index.html', comic=None,
+                             error=f"Comic #{comic_num} could not be found. It may not exist.")
+
+
+
+
+#Feature #3
+@app.route('/randomcomic')
+def random_comic():
+    #Uses "random" to generate a random number from 1 to the latests XKCD issue
+    highest = get_latest_comic()
+    highestnum = highest['num']
+
+    number = random.randint(1, highestnum)
+
+   
+    comic = get_comic_by_number(number)
+    if comic:
+        return render_template('index.html', comic=comic, error=None)
+    else:
+        return render_template('index.html', comic=None,
+                             error=f"Comic #{comic} could not be found. It may not exist.")
+    
 
 # Run the Flask development server
 if __name__ == '__main__':
